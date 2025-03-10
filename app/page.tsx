@@ -1,5 +1,5 @@
 import { Features } from "./(home)/_components/features";
-import { HeroSection } from "./(home)/_components/hero";
+import { HomeHero } from "./(home)/_components/hero";
 import { TimelineSection } from "./(home)/_components/timeline";
 import { ContactSection } from "./(home)/_components/contact";
 import { OfficeForm } from "@/components/forms/testform";
@@ -9,7 +9,7 @@ import { Testimonials } from "./(home)/_components/Testimonials";
 export default function Home() {
   return (
     <main className="">
-      <HeroSection />
+      <HomeHero />
       <section className="my-20 mt-40">
         <Testimonials />
       </section>
