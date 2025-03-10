@@ -4,7 +4,7 @@ import { TimelineSection } from "./(home)/_components/timeline";
 import { ContactSection } from "./(home)/_components/contact";
 import { OfficeForm } from "@/components/forms/testform";
 import { WhatWeDo } from "./(home)/_components/bento";
-import { Testimonials } from "./_components/Testimonials";
+import { Testimonials } from "./(home)/_components/Testimonials";
 
 export default function Home() {
   return (
