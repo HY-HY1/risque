@@ -6,12 +6,20 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
+interface Action {
+  label: string;
+  href: string;
+  variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link";
+}
+
 interface HeroProps extends React.HTMLAttributes<HTMLElement> {
   className?: string;
   title?: string;
   subtitle?: string;
-  ctaText?: string;
-  ctaLink?: string;
+  actions?: Action[];
+  titleClassName?: string;
+  subtitleClassName?: string;
+  actionsClassName?: string;
 }
 
 const Hero = React.forwardRef<HTMLElement, HeroProps>(
@@ -20,8 +28,10 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>(
       className,
       title = "Transform Your Digital Presence",
       subtitle = "We create stunning websites and digital solutions that drive results.",
-      ctaText = "Get Started",
-      ctaLink = "/contact",
+      actions = [],
+      titleClassName,
+      subtitleClassName,
+      actionsClassName,
       ...props
     },
     ref
@@ -44,7 +54,10 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>(
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500"
+            className={cn(
+              "text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500",
+              titleClassName
+            )}
           >
             {title}
           </motion.h1>
@@ -52,21 +65,33 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>(
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12"
+            className={cn(
+              "text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12",
+              subtitleClassName
+            )}
           >
             {subtitle}
           </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <Link href={ctaLink}>
-              <Button size="lg" className="text-lg px-8">
-                {ctaText}
-              </Button>
-            </Link>
-          </motion.div>
+          {actions.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className={cn("flex gap-4 justify-center", actionsClassName)}
+            >
+              {actions.map((action, index) => (
+                <Link key={index} href={action.href}>
+                  <Button 
+                    size="lg" 
+                    variant={action.variant || "default"}
+                    className="text-lg px-8"
+                  >
+                    {action.label}
+                  </Button>
+                </Link>
+              ))}
+            </motion.div>
+          )}
         </div>
 
         {/* Gradient Overlay */}
