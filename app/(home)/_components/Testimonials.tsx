@@ -9,38 +9,36 @@ import { Star, Quote } from "lucide-react";
 const testimonials = [
   {
     id: 1,
-    name: "Sarah Johnson",
-    role: "CEO, TechStart Inc.",
-    image: "/testimonials/sarah.jpg",
-    company_logo: "/companies/techstart.png",
-    content: "Working with this team was transformative for our business. Our new website has increased our conversion rate by 150% and provides a much better user experience.",
+    name: "Emily R.",
+    role: "Owner, Local Dog Walker",
+    image: "/testimonials/emily.jpg",
+    content:
+      "Our new website makes booking walks so easy for our clients! We’ve seen a huge increase in inquiries, and pet owners love the real-time updates. It’s helped us grow faster than we imagined.",
     rating: 5,
   },
   {
     id: 2,
-    name: "Michael Chen",
-    role: "Founder, EcoStore",
-    image: "/testimonials/michael.jpg",
-    company_logo: "/companies/ecostore.png",
-    content: "The e-commerce solution they built for us is incredible. Our sales have doubled since launch, and the platform is so easy to manage. Couldn't be happier!",
+    name: "David L.",
+    role: "Restaurant Owner",
+    image: "/testimonials/david.jpg",
+    content:
+      "We needed a website that reflected our restaurant’s atmosphere and made online reservations effortless. Since launching, online bookings have surged, and we’re seeing more new customers discovering us online.",
     rating: 5,
   },
   {
     id: 3,
-    name: "Emma Davis",
-    role: "Marketing Director, StyleHub",
-    image: "/testimonials/emma.jpg",
-    company_logo: "/companies/stylehub.png",
-    content: "Their attention to detail and understanding of our brand was impressive. The website they delivered exceeded our expectations in every way.",
+    name: "Sophia M.",
+    role: "Owner, Local Café",
+    image: "/testimonials/sophia.jpg",
+    content:
+      "Our café’s website now beautifully showcases our menu and lets customers order online with ease. Foot traffic has increased, and online sales have doubled. It’s been a game-changer for our business!",
     rating: 5,
-  }
+  },
 ];
 
 export function Testimonials() {
-  const [activeTestimonial, setActiveTestimonial] = useState(0);
-
   return (
-    <section className="py-20 bg-muted/50">
+    <section className="py-20 bg-muted/50 sticky top-0">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -50,10 +48,10 @@ export function Testimonials() {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Trusted by Industry Leaders
+            Websites That Help Businesses Thrive
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            See what our clients have to say about their experience working with us
+            From local services to bustling cafés, we craft websites that drive real results.
           </p>
         </motion.div>
 
@@ -77,7 +75,7 @@ export function Testimonials() {
                     <p className="text-sm text-muted-foreground">{testimonial.role}</p>
                   </div>
                 </div>
-                
+
                 <div className="mb-4">
                   <Quote className="h-8 w-8 text-primary/20 mb-2" />
                   <p className="text-muted-foreground">{testimonial.content}</p>
@@ -85,10 +83,7 @@ export function Testimonials() {
 
                 <div className="flex items-center gap-1">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-4 w-4 fill-primary text-primary"
-                    />
+                    <Star key={i} className="h-4 w-4 fill-primary text-primary" />
                   ))}
                 </div>
               </Card>
@@ -103,12 +98,12 @@ export function Testimonials() {
           transition={{ duration: 0.5, delay: 0.8 }}
           className="mt-16 text-center"
         >
-          <p className="text-xl font-medium mb-4">Ready to transform your digital presence?</p>
+          <p className="text-xl font-medium mb-4">Your business deserves a website that works for you.</p>
           <p className="text-muted-foreground">
-            Join our satisfied clients and take your business to the next level
+            Let’s build something amazing—reach out today.
           </p>
         </motion.div>
       </div>
     </section>
   );
-} 
+}

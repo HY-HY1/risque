@@ -2,7 +2,7 @@ import { ContactForm } from "@/components/forms/contactForm";
 
 export function ContactSection() {
   return (
-    <section className="py-24 m-auto w-[70vw] bg-neutral-50 dark:bg-neutral-950">
+    <section className="py-24 m-auto w-[95vw] md:w-[70vw] bg-neutral-50 dark:bg-neutral-950">
       <div className="container px-4 md:px-6">
         <div className="grid gap-10 lg:grid-cols-2">
           <div className="space-y-6">

@@ -133,6 +133,10 @@ export function TimelineSection() {
 
   return (
     <div className="min-h-screen w-full">
+      <div className="w-[70vw] m-auto h-full py-4 mb-10 border-b border-border">
+        <h3>Your Website, Start to finish</h3>
+        <p>Our rigorous process ensures top-quality results while seamlessly incorporating customer requests.</p>
+      </div>
       <div className="w-full">
         <Timeline data={data} />
       </div>

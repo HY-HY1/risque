@@ -2,6 +2,8 @@
 
 import * as React from "react"
 import Link from "next/link"
+import { useEffect, useState } from "react"
+import MobileNavbar from "./mobileNavbar"
 
 import { cn } from "@/lib/utils"
 import {
@@ -164,6 +166,27 @@ const ListItem = React.forwardRef<
 ListItem.displayName = "ListItem"
 
 const Navbar = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 1024); // 1024px is our breakpoint for mobile
+    };
+
+    // Initial check
+    checkScreenSize();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', checkScreenSize);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
+  if (isMobile) {
+    return <MobileNavbar />;
+  }
+
   return (
     <div className='z-50 h-20 w-full fixed border-b border-gray-100 dark:border-gray-800 bg-white/80 dark:bg-gray-950/80 backdrop-blur-lg'>
       <div className='max-w-7xl mx-auto px-4 h-full'>
@@ -177,8 +200,8 @@ const Navbar = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Navbar
 

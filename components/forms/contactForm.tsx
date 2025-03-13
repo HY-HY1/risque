@@ -21,6 +21,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useState } from "react";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -46,6 +47,7 @@ const formSchema = z.object({
 });
 
 export function ContactForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -60,8 +62,29 @@ export function ContactForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      setIsSubmitting(true);
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+
+      
+      form.reset();
+    } catch (error) {
+
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -202,7 +225,9 @@ export function ContactForm() {
           </AccordionItem>
         </Accordion>
 
-        <Button type="submit" className="w-full">Submit</Button>
+        <Button type="submit" className="w-full" disabled={isSubmitting}>
+          {isSubmitting ? "Sending..." : "Submit"}
+        </Button>
       </form>
     </Form>
   );
