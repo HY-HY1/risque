@@ -41,7 +41,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} ${rubik.variable} ${montserrat.variable}  antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${rubik.variable} ${montserrat.variable} overflow-x-hidden antialiased`}
     >
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${rubik.variable} ${montserrat.variable}  antialiased overflow-x-hidden`}
