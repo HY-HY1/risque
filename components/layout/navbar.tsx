@@ -19,37 +19,37 @@ import {
 const components: { title: string; href: string; description: string }[] = [
   {
     title: "Bespoke Websites",
-    href: "/services/web-design",
+    href: "/services#bespoke-websites",
     description:
       "Crafting unique, conversion-focused websites tailored to your business goals and target audience.",
   },
   {
     title: "E-commerce Solutions",
-    href: "/services/ecommerce",
+    href: "/services#ecommerce-solutions",
     description:
       "Building powerful online stores that drive sales with seamless user experience and secure payments.",
   },
-  {
-    title: "Digital Growth",
-    href: "/services/seo",
-    description:
-      "Comprehensive SEO, analytics, and digital marketing to increase your online visibility and ROI.",
-  },
+  // {
+  //   title: "Digital Growth",
+  //   href: "/services#digital-growth",
+  //   description:
+  //     "Comprehensive SEO, analytics, and digital marketing to increase your online visibility and ROI.",
+  // },
   {
     title: "Website Care Plans",
-    href: "/services/maintenance",
+    href: "/services#website-care-plans",
     description:
       "Proactive maintenance, security updates, and 24/7 support to keep your website running smoothly.",
   },
-  {
-    title: "Content Strategy",
-    href: "/services/marketing",
-    description:
-      "Strategic content creation and management to engage your audience and build brand authority.",
-  },
+  // {
+  //   title: "Content Strategy",
+  //   href: "/services#content-strategy",
+  //   description:
+  //     "Strategic content creation and management to engage your audience and build brand authority.",
+  // },
   {
     title: "UI/UX Design",
-    href: "/services/branding",
+    href: "/services#ui-ux-design",
     description:
       "User-centered design that delivers intuitive navigation and exceptional user experiences.",
   },
@@ -60,7 +60,9 @@ export function NavMenu() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>About Us</NavigationMenuTrigger>
+          <Link href="/about">
+            <NavigationMenuTrigger>About Us</NavigationMenuTrigger>
+          </Link>
           <NavigationMenuContent className="z-50">
             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
@@ -81,17 +83,19 @@ export function NavMenu() {
               <ListItem href="/about" title="Our Story">
                 Award-winning web design agency with over a decade of experience.
               </ListItem>
-              <ListItem href="/portfolio" title="Success Stories">
+              <ListItem href="/about#success-stories" title="Success Stories">
                 See how we've helped businesses achieve their digital goals.
               </ListItem>
-              <ListItem href="/process" title="Our Approach">
+              <ListItem href="/about#our-approach" title="Our Approach">
                 Our proven 6-step process for delivering exceptional results.
               </ListItem>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
+         <Link href="/services">
           <NavigationMenuTrigger>What We Do</NavigationMenuTrigger>
+         </Link>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
               {components.map((component) => (
